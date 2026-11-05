@@ -502,3 +502,5 @@ body>.minicta{margin:10px var(--pad) 0;max-width:none}
 .bars + .dgcap i.d,.graph.bars .dgcap i.d{border-top-color:#9FC9D8;border-top-width:8px}
 .graph.bars .dgcap i{border-top-width:8px}
 @media (prefers-reduced-motion:reduce){.bars rect{transform:none}.bars .arw{stroke-dashoffset:0}.bars .tg,.bars .ts{opacity:1}}
+.final-btn-yen s{display:block;font-size:12px;font-weight:500;color:rgba(242,226,180,.7);text-decoration-thickness:1.5px;line-height:1.2;text-align:right}
+.final-btn.is-rec .final-btn-yen s{color:var(--mute)}

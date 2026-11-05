@@ -4,25 +4,25 @@ const PLANS = [
   {
     key: '2w', name: '2週間プラン', short: '2週間', lat: '14 DAYS', term: '14日間', gauge: 1, healing: 2,
     goal: '今の乱れた流れを整え始める', desc: '不安や迷いを軽くして、前向きな毎日へ。',
-    regular: '', price: '14,980',
+    regular: '29,980', price: '14,980',
     url: 'https://ummeishuuseish-4uj3w.stores.jp/items/6aeb0d9966b0c8b6b18823e6'
   },
   {
     key: '1m', name: '1か月プラン', short: '1か月', lat: '1 MONTH', term: '1か月', gauge: 3, healing: 4,
     goal: '良い流れを育てる', desc: '同じ悩みに振り回されず、理想へ向かって動き始める。',
-    regular: '', price: '39,800',
+    regular: '59,800', price: '39,800',
     url: 'https://ummeishuuseish-4uj3w.stores.jp/items/6aeb0e2a66b0c8b6b1882408'
   },
   {
     key: '3m', name: '3か月プラン', short: '3か月', lat: '3 MONTHS', term: '3か月', gauge: 6, healing: 13,
     goal: '理想の未来へ進む', desc: '繰り返す悩みを乗り越え、望む幸せに近づく。',
-    regular: '', price: '99,800', recommended: true,
+    regular: '149,800', price: '99,800', recommended: true,
     url: 'https://ummeishuuseish-4uj3w.stores.jp/items/6aeb0ea5b34012b2a70c19d7'
   },
   {
     key: '6m', name: '6か月プラン', short: '6か月', lat: '6 MONTHS', term: '6か月', gauge: 10, healing: 26,
     goal: '理想の流れを自分のものにする', desc: '過去の悩みに縛られず、幸せを選び続けられる自分へ。',
-    regular: '', price: '159,800', deal: '3か月プラン2回分より39,800円お得',
+    regular: '259,800', price: '159,800',
     url: 'https://ummeishuuseish-4uj3w.stores.jp/items/6aeb0f5b66b0c8b6b18824b7'
   }
 ];
@@ -86,7 +86,7 @@ function renderPlans() {
         <p class="cnt"><b>${p.gauge}</b>/ 10</p>
       </div>
       <p class="heal">遠隔ヒーリング<b>約<span data-count="${p.healing}">${p.healing}</span>回</b></p>
-      <p class="gift">《今だけ》特別特典《魂流開運の待ち受け》無料プレゼント</p>
+      <p class="gift">《今だけ》特別特典<span style="white-space:nowrap">《運命調律の壁紙》</span>無料プレゼント</p>
       <a class="pbtn" href="${p.url}" target="_blank" rel="noopener">${p.name}を申し込む${p.recommended ? '<span class="s">迷ったら、3か月の伴走サポートがおすすめだよ。</span>' : ''}</a>`;
     box.appendChild(card);
   });
@@ -104,8 +104,8 @@ function renderFinal() {
     a.innerHTML = `
       ${p.recommended ? '<span class="final-btn-tag">おすすめ</span>' : ''}
       <span class="final-btn-name">${p.name}<small>${p.name}を申し込む</small></span>
-      <span class="final-btn-yen">${p.price}<small>円</small></span>`;
-    a.setAttribute('aria-label', `${p.name}を申し込む（${p.price}円）`);
+      <span class="final-btn-yen">${p.regular ? `<s>${p.regular}円</s>` : ''}${p.price}<small>円</small></span>`;
+    a.setAttribute('aria-label', `${p.name}を申し込む（${p.regular ? `通常${p.regular}円→` : ''}${p.price}円）`);
     box.appendChild(a);
   });
 }
