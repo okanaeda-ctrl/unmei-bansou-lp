@@ -129,13 +129,13 @@ function wrapJapanese() {
     : c.replace(/([てにがをはでとも])(?=[\u3041-\u3096\u4e00-\u9fff])/g, (m, k, i) => (i >= 2 && i < c.length - 4 ? k + ZW : k))).join(ZW);
   // BudouX が語の途中で切るもの（と|して・と|いう・当ては|まる・も|しかして）はつなぐ
   const joinBad = new RegExp(`(と|は|も)${ZW}(?=して|いう|まる|しかして)`, 'g');
-  // 360px で見つけたもの（1か|月・寄り|添って）もつなぐ
-  const joinWord = new RegExp(`(か)${ZW}(?=月)|(寄り)${ZW}(?=添)`, 'g');
+  // 360/375px で見つけたもの（1か|月・寄り|添って・前|向き）もつなぐ
+  const joinWord = new RegExp(`(か)${ZW}(?=月)|(寄り)${ZW}(?=添)|(前)${ZW}(?=向き)`, "g");
   roots.forEach(root => {
     const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     for (let n; (n = tw.nextNode());) {
       if (!n.data.includes(ZW)) continue;
-      const s = splitLong(n.data).replace(joinBad, '$1').replace(joinWord, (m, a, b) => a || b);
+      const s = splitLong(n.data).replace(joinBad, '$1').replace(joinWord, (m, a, b, c) => a || b || c);
       if (s !== n.data) n.data = s;
     }
   });
